@@ -312,6 +312,9 @@ class DagBag(LoggingMixin):
     def _load_modules_from_file(self, filepath, safe_mode):
         from airflow.models.dag import DagContext
 
+        #>>> FBE
+        self.log.info(f"From DagBag Importing {filepath}")
+        #<<< FBE
         if not might_contain_dag(filepath, safe_mode):
             # Don't want to spam user with skip messages
             if not self.has_logged:
